@@ -4,7 +4,7 @@ const ctx = canvas.getContext('2d');
 const box = 20;  
 let snake = [{ x: 9 * box, y: 10 * box }]; 
 let direction = 'RIGHT';
-let nextDirection = 'RIGHT'; // Nueva variable para manejar el siguiente movimiento
+let nextDirection = 'RIGHT';
 let food = {
   x: Math.floor(Math.random() * 19 + 1) * box,
   y: Math.floor(Math.random() * 19 + 1) * box
@@ -13,15 +13,11 @@ let food = {
 let score = 0;
 let highScore = localStorage.getItem('highScore') ? parseInt(localStorage.getItem('highScore')) : 0;
 document.getElementById('highScore').textContent = highScore;
-
-// Eliminar los event listeners duplicados y usar solo uno
 document.addEventListener('keydown', setDirection);
 
 function setDirection(event) {
-    // Solo cambiar la dirección si el juego está activo
     if (!game) return;
     
-    // Usar nextDirection para hacer los cambios más fluidos
     if (event.keyCode === 37 && direction !== 'RIGHT') nextDirection = 'LEFT';
     if (event.keyCode === 38 && direction !== 'DOWN') nextDirection = 'UP';
     if (event.keyCode === 39 && direction !== 'LEFT') nextDirection = 'RIGHT';
@@ -29,12 +25,9 @@ function setDirection(event) {
 }
 
 function draw() {
-    // Actualizar la dirección al inicio del frame para mayor fluidez
     direction = nextDirection;
     
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Dibujar la serpiente con bordes para mejor visualización
     for (let i = 0; i < snake.length; i++) {
         ctx.fillStyle = (i === 0) ? '#4CAF50' : '#8BC34A';
         ctx.fillRect(snake[i].x, snake[i].y, box, box);
@@ -42,7 +35,7 @@ function draw() {
         ctx.strokeRect(snake[i].x, snake[i].y, box, box);
     }
 
-    // Dibujar la comida con diseño mejorado
+    // Comida
     ctx.fillStyle = 'red';
     ctx.beginPath();
     ctx.arc(food.x + box/2, food.y + box/2, box/2, 0, Math.PI * 2);
@@ -73,8 +66,6 @@ function draw() {
 
     // Crear nueva cabeza
     const newHead = { x: snakeX, y: snakeY };
-
-    // Detección de colisiones mejorada
     if (checkCollision(newHead)) {
         gameOver();
         return;
@@ -83,14 +74,11 @@ function draw() {
     snake.unshift(newHead);
 }
 
-// Función de colisión mejorada
 function checkCollision(head) {
-    // Colisión con paredes
     if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height) {
         return true;
     }
     
-    // Colisión consigo misma (empezar desde 1 para no contar la cabeza)
     for (let i = 1; i < snake.length; i++) {
         if (head.x === snake[i].x && head.y === snake[i].y) {
             return true;
@@ -110,7 +98,7 @@ function gameOver() {
         document.getElementById('highScore').textContent = highScore;
     }
     
-    // Mostrar mensaje de game over más elegante
+    // Mensaje de game over
     ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
