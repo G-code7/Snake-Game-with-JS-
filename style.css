@@ -1,0 +1,30 @@
+body {
+    background-color: #1c1c1c;
+    color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+canvas {
+    border: 2px solid #4CAF50;
+    background-color: #2d2d2d;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 2em;
+    color: #4CAF50;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    color: #f4f4f4;
+}
