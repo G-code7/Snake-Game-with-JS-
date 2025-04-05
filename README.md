@@ -50,7 +50,7 @@ A classic Snake game implemented with modern JavaScript.
 
 ## Screenshot
 
-![Game Screenshot](screenshot.png)
+![Game Screenshot](/blob/main/static/Images/snake-screenshot.webp)
 
 
 ## Contributing
