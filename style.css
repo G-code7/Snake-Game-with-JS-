@@ -3,11 +3,22 @@ body {
     color: #f4f4f4;
     font-family: Arial, sans-serif;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+}
+
+.game-container {
+    text-align: center;
+}
+
+.score-container {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    margin: 10px 0;
+    font-size: 1.2em;
 }
 
 canvas {
@@ -19,12 +30,5 @@ canvas {
 h1 {
     font-size: 2em;
     color: #4CAF50;
-    text-align: center;
-}
-
-p {
-    text-align: center;
     margin-bottom: 10px;
-    font-size: 1.2em;
-    color: #f4f4f4;
 }
